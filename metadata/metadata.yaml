@@ -1,0 +1,7 @@
+title: AllosMod benchmark
+tags: [allostery, benchmark]
+pmid: 22403063
+prereqs: [modeller]
+test:
+    runtime: 24h
+    build: release
