@@ -9,7 +9,7 @@ This benchmark tests the AllosMod method, as implemented in the
 
 ## Information
 
-_Author(s)_: Patrick Weinkam
+_Author(s)_: Patrick Weinkam, Ben Webb
 
 _License_: [LGPL](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html).
 This library is free software; you can redistribute it and/or
