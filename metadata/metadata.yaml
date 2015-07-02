@@ -1,7 +1,7 @@
 title: AllosMod benchmark
-tags: [allostery, benchmark]
+tags: [allostery, glycosylation, benchmark]
 pmid: 22403063
-prereqs: [modeller]
+prereqs: [allosmod, modeller]
 test:
     runtime: 24h
     build: release
