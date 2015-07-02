@@ -6,6 +6,7 @@ import sys
 import subprocess
 import glob
 import shutil
+import modeller
 
 TOPDIR = os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]), '..'))
 
@@ -49,6 +50,37 @@ class Tests(unittest.TestCase):
                   'pm.pdb.D00000001']:
             self.assertTrue(os.path.exists(f))
         # todo: test the analysis scripts
+
+    def test_glyc(self):
+        """Test glycosylation benchmark"""
+        os.chdir(os.path.join(TOPDIR, 'benchmark', 'input_glyc'))
+        # Cleanup anything left over from a previous run
+        shutil.rmtree('pred_dECALCrAS1000', ignore_errors=True)
+
+        subprocess.check_call(['allosmod', 'setup'])
+        # Setup should generate ligand and script:
+        for f in ['lig.pdb', 'qsub.sh']:
+            self.assertTrue(os.path.exists(f))
+        # Run the protocol
+        subprocess.check_call(['/bin/sh', './qsub.sh'])
+        # Should generate more files:
+        os.chdir('pred_dECALCrAS1000/2AAS.pdb_0')
+        for f in ['align2.ali', 'allosmod.py', 'converted.rsr',
+                  'model_glyc.log', 'model_glyc.py', 'pm.pdb.B99990001.pdb',
+                  'pm.pdb.D00000001', 'pm.pdb.V99990001', 'run.log']:
+            self.assertTrue(os.path.exists(f))
+
+        # Generated model should have sugars added to second chain
+        e = modeller.environ()
+        e.io.hetatm = True
+        m = modeller.model(e, file='pm.pdb.B99990001.pdb')
+        self.assertEqual(len(m.chains), 2)
+        self.assertEqual(len(m.chains[0].residues), 124)
+        self.assertEqual(len(m.chains[1].residues), 16)
+        self.assertEqual([r.name for r in m.chains[1].residues],
+                         ['NAG', 'NAG', 'BMA', 'MAN', 'MAN', 'MAN', 'MAN',
+                          'MAN', 'NAG', 'NAG', 'BMA', 'MAN', 'MAN', 'MAN',
+                          'MAN', 'MAN'])
 
 if __name__ == '__main__':
     unittest.main()
