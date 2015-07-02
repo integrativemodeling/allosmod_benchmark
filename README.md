@@ -18,7 +18,7 @@ modify it under the terms of the GNU Lesser General Public
 License as published by the Free Software Foundation; either
 version 2 of the License, or (at your option) any later version.
 
-_Last known good IMP version_: [![build info](https://salilab.org/imp/systems/?sysstat=16&branch=master)](http://salilab.org/imp/systems/) [![build info](https://salilab.org/imp/systems/?sysstat=16&branch=develop)](http://salilab.org/imp/systems/)
+_Last known good IMP version_: [![build info](https://integrativemodeling.org/systems/?sysstat=16&branch=master)](http://integrativemodeling.org/systems/) [![build info](https://integrativemodeling.org/systems/?sysstat=16&branch=develop)](http://integrativemodeling.org/systems/)
 
 _Testable_: Yes.
 
