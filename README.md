@@ -1,4 +1,5 @@
 This benchmark tests the AllosMod method, as implemented in the
+[AllosMod library](https://github.com/salilab/allosmod-lib) and
 [AllosMod web service](http://salilab.org/allosmod).
 
 
