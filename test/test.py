@@ -28,7 +28,7 @@ class Tests(unittest.TestCase):
         for f in ['lig.pdb', 'qsub.sh']:
             self.assertTrue(os.path.exists(f))
         # Run the protocol
-        subprocess.check_call(['/bin/sh', './qsub.sh'])
+        subprocess.check_call(['/bin/sh', '--login', './qsub.sh'])
         # Should generate more files:
         for f in ['README', 'pred_dECALCrAS1000/3UWP.pdb_0']:
             self.assertTrue(os.path.exists(f))
@@ -68,7 +68,7 @@ class Tests(unittest.TestCase):
         for f in ['lig.pdb', 'qsub.sh']:
             self.assertTrue(os.path.exists(f))
         # Run the protocol
-        subprocess.check_call(['/bin/sh', './qsub.sh'])
+        subprocess.check_call(['/bin/sh', '--login', './qsub.sh'])
         # Should generate more files:
         os.chdir('pred_dECALCrAS1000/2AAS.pdb_0')
         for f in ['align2.ali', 'allosmod.py', 'converted.rsr',
