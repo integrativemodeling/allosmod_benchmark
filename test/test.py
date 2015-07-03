@@ -8,6 +8,12 @@ import glob
 import shutil
 import modeller
 
+# Remove SGE-specific environment variables, so AllosMod script thinks it's
+# running outside of SGE
+for e in ['JOB_ID', 'SGE_TASK_ID']:
+    if e in os.environ:
+        del os.environ[e]
+
 TOPDIR = os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]), '..'))
 
 class Tests(unittest.TestCase):
