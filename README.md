@@ -2,11 +2,16 @@ This benchmark tests the AllosMod method, as implemented in the
 [AllosMod library](https://github.com/salilab/allosmod-lib) and
 [AllosMod web service](http://salilab.org/allosmod).
 
-
 ## Benchmark files
 
 - `3UWPA`: basic test of the method
 - `input_glyc`: test of the support for glycosylation
+
+To run the benchmark, first [install AllosMod and its dependencies](https://allosmod.readthedocs.org/en/latest/installation.html).
+Then, in each directory, run `allosmod setup` to check the input files; this
+will generate a file `qsub.sh`. Run this script to set up the system. In the
+`3UWPA` case, this is in turn will generate input files for
+[MODELLER](http://salilab.org/modeller/) which should be run with that program.
 
 ## Information
 
@@ -26,3 +31,4 @@ _Parallelizeable_: Yes
 
 _Publications_:
  - [Weinkam P, Pons J, Sali A., Proc Natl Acad Sci USA. (2012) 109, 4875-80.](http://www.ncbi.nlm.nih.gov/pubmed/22403063)
+ - [Guttman M, Weinkam P, Sali A, Lee KK, Structure (2013) 21, 321-31.](http://www.ncbi.nlm.nih.gov/pubmed/23473666)
