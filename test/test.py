@@ -43,7 +43,7 @@ class Tests(unittest.TestCase):
         with open('model_run.py') as fh:
             contents = fh.read()
         with open('model_run.py', 'w') as fh:
-            fh.write("def dummy_opt(*args, **keys): pass\n")
+            fh.write("def dummy_opt(*args, **keys): return 0.\n")
             fh.write("from modeller.optimizers import molecular_dynamics\n")
             fh.write("molecular_dynamics.optimize = dummy_opt\n\n")
             fh.write(contents)
