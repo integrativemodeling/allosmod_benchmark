@@ -7,6 +7,7 @@ import subprocess
 import glob
 import shutil
 import modeller
+import itertools
 
 # Remove SGE-specific environment variables, so AllosMod script thinks it's
 # running outside of SGE
@@ -49,7 +50,7 @@ class Tests(unittest.TestCase):
         # Run the sampling
         subprocess.check_call(['python', 'model_run.py'])
         # Should have generated a set of PDB files:
-        for i in range(17) + range(501, 511) + range(1001, 3001):
+        for i in itertools.chain(range(17), range(501, 511), range(1001, 3001)):
             os.unlink('pm.pdb.B%04d0001.pdb' % i)
         self.assertEqual(glob.glob('pm.pdb.B*.pdb'), ['pm.pdb.B99990001.pdb'])
         for f in ['pm.pdb.ini', 'pm.pdb.sch', 'pm.pdb.V99990001',
